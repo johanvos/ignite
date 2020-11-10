@@ -35,24 +35,30 @@ group = 'com.gluonhq'
 version = '1.0.3-SNAPSHOT'
 
 apply from: 'gradle/codeQuality.gradle'
+=======
+repositories {
+    mavenCentral()
+}
 
-sourceCompatibility = 1.8
+sourceCompatibility = JavaVersion.VERSION_11
 
 subprojects {
+
     apply plugin: 'java'
     apply plugin: 'maven'
     apply from: '../gradle/codeQuality.gradle'
     apply from: '../gradle/mavenPublish.gradle'
 
-    sourceCompatibility = 1.8
-
-    repositories {
-        mavenCentral()
-    }
+    sourceCompatibility = JavaVersion.VERSION_11
 
     group 'com.gluonhq'
     version = rootProject.version
     archivesBaseName = 'ignite-' + name
+
+    javafx {
+        version = "15"
+        modules = [ 'javafx.controls', 'javafx.fxml' ]
+    }
 
     configurations {
         published
@@ -73,13 +79,10 @@ subprojects {
     }
 }
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     compile project(':dagger')
     compile project(':guice')
     compile project(':spring')
+    compile project(':micronaut')
     compile project(':common')
 }
