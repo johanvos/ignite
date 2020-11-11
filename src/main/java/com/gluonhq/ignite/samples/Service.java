@@ -25,25 +25,15 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package com.gluonhq.ignite;
+package com.gluonhq.ignite.samples;
 
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
+import javax.inject.Singleton;
 
-import javax.inject.Inject;
-import java.net.URL;
-import java.util.ResourceBundle;
+@Singleton
+public class Service {
 
-public class ViewController implements Initializable {
-
-    @Inject Service service;
-    @FXML Label label;
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        label.setText(service.getText());
+    public String getText() {
+        return "This text is INJECTED";
     }
-
 
 }
