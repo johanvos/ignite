@@ -28,7 +28,10 @@
 
 plugins {
     id "java"
+    id "application"
     id "com.github.hierynomus.license" version "0.15.0"
+    id "io.micronaut.application" version '1.0.5'
+    id "org.openjfx.javafxplugin" version '0.0.8'
 }
 
 group = 'com.gluonhq'
@@ -63,6 +66,7 @@ javafx {
 subprojects {
     apply plugin: 'java'
     apply plugin: 'maven'
+    apply plugin: 'org.openjfx.javafxplugin'
     apply from: '../gradle/codeQuality.gradle'
     apply from: '../gradle/mavenPublish.gradle'
 
